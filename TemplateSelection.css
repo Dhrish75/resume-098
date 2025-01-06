@@ -1,0 +1,44 @@
+/* Resume.css */
+.resume {
+    display: flex;
+    font-family: Arial, sans-serif;
+   
+}
+
+.left-section {
+    width: 30%;
+    background-color: #2d3e50;
+    color: white;
+    padding: 20px;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.contact, .education, .expertise, .languages {
+    margin-top: 20px;
+}
+
+.contact p, .education p, .languages p, .expertise ul {
+    margin: 5px 0;
+}
+
+.right-section {
+    width: 70%;
+    padding: 20px;
+}
+
+.experience, .references {
+    margin-top: 20px;
+}
+
+.job, .reference {
+    margin-bottom: 20px;
+}
