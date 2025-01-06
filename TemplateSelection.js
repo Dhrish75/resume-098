@@ -1,9 +1,11 @@
 // Updated Resume Component
 // Updated Resume Component with Three Templates
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Template1 from "./templates/Template1";
 import Template2 from "./templates/Template2";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import "./TemplateSelection.css";
 
 const TemplateSelection = () => {
@@ -27,6 +29,25 @@ const TemplateSelection = () => {
       return <Template2 formData={formData} />;
     }
     return <p>Please select a template to preview.</p>;
+  };
+
+  const handleDownload = async () => {
+    const templateElement = document.querySelector(".selected-template"); // Select the template
+    if (!templateElement) {
+      alert("Please select a template first.");
+      return;
+    }
+
+    // Convert the template to an image and generate the PDF
+    const canvas = await html2canvas(templateElement);
+    const imageData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("portrait", "px", "a4");
+
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+
+    pdf.addImage(imageData, "PNG", 0, 0, pageWidth, pageHeight);
+    pdf.save("Resume_Template.pdf");
   };
 
   return (
@@ -64,6 +85,17 @@ const TemplateSelection = () => {
       </div>
 
       <div className="selected-template">{renderSelectedTemplate()}</div>
+
+      {/* Download Button */}
+      <div className="d-grid gap-2 col-6 mx-auto mt-4">
+        <button
+          className="btn btn-success"
+          onClick={handleDownload}
+          disabled={!selectedTemplate}
+        >
+          Download as PDF
+        </button>
+      </div>
     </div>
   );
 };
