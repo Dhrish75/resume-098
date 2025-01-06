@@ -1,0 +1,28 @@
+.qwerty {
+  text-align: center;
+  font-size: 3em;
+  font-weight: bolder;
+  
+}
+
+.dis{
+  text-align: center;
+  font-size: 1.5em;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  padding-top: 50px;
+
+}
+.img{
+  background-size: contain;
+}
+
+.nav-item{
+  position: relative;
+  
+}
+
+
+
+
+
